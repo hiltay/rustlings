@@ -11,7 +11,10 @@
 // I AM NOT DONE
 
 pub trait Licensed {
-    fn licensing_info(&self) -> String;
+    fn licensing_info(&self) -> String{
+        // trait的默认实现
+        String::from("Some information")
+    }
 }
 
 struct SomeSoftware {
@@ -21,7 +24,7 @@ struct SomeSoftware {
 struct OtherSoftware {
     version_number: String,
 }
-
+// 其它类型无需再实现这些默认方法，并且也可以在必要时重载它们
 impl Licensed for SomeSoftware {} // Don't edit this line
 impl Licensed for OtherSoftware {} // Don't edit this line
 
