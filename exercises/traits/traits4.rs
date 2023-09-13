@@ -7,8 +7,6 @@
 // Execute `rustlings hint traits4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 pub trait Licensed {
     fn licensing_info(&self) -> String {
         "some information".to_string()
@@ -23,7 +21,10 @@ impl Licensed for SomeSoftware {}
 impl Licensed for OtherSoftware {}
 
 // YOU MAY ONLY CHANGE THE NEXT LINE
-fn compare_license_types(software: ??, software_two: ??) -> bool {
+fn compare_license_types<T: Licensed, U: Licensed>(software: T, software_two: U) -> bool {
+    // 泛型约束：`compare_license_types`函数是一个泛型函数，其中参数`software`的类型为`T`，且`T`必须实现`Licensed`特征；
+    // 参数`software_two`的类型为`U`，且`U`必须实现`Licensed`特征；
+    // 这里T和U是两个不同类型，因此使用两个泛型参数；
     software.licensing_info() == software_two.licensing_info()
 }
 
